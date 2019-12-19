@@ -1,19 +1,22 @@
 #!/usr/bin/env ruby
 
 class TicTacToe
-    attr_accessor :player1, :player2
     
     def initialize
         @instruction = [" tl | tm | tr "," "," ml | mm | mr "," "," bl | bm | br "]
+        @board = Board.new
+        @player1 = Player.new(@name1,:x,@board)
+        @player2 = Player.new(@name2,:y,@board)
+        @current_player = @player1
     end
     def user_interface
         puts "WELCOME TO TIC TAC TOE YOU WILL LOVE IT"
         puts "---------------------------------------\n\n"
         print "Player 1 name "
-        @player1 = gets.chomp
+        @name1 = gets.chomp
         puts " "
         print "Player 2 name "
-        @player2 = gets.chomp
+        @name2 = gets.chomp
         puts " "
         puts "----------------------------------------------------------------------"
         puts "|#{@player1} and #{player2}. You Both are going to be oponent for this Game|"
@@ -23,6 +26,41 @@ class TicTacToe
         puts " "
         puts "You can type to take position 'tl','tm','tr' etc...\n\n"
         puts @instruction
+    end
+    def play
+        loop do
+            @board.render
+            @current_player.get_cordinates
+
+            break if game_over
+            switch_players
+        end
+    end
+    def game_over
+        check_victory || check_draw
+    end
+    def check_victory
+        if @board.winning_combination?(@current_player.piece)
+            puts "Congratulation #{@current_player.name} You WON"
+            turn
+        else
+            false
+        end
+    end
+    def check_draw
+        if @board.full?
+            puts "You Both PLayed Well You Have a Tie"
+            true
+        else
+            false
+        end
+    end
+    def switch_players
+        if @current_player == player1
+            @current_player = player2
+            else
+                @current_player = player1
+        end
     end
 end
 tic_tac_game = TicTacToe.new
