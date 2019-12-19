@@ -3,10 +3,23 @@ class TicTacToe
     attr_accessor :player1 , :player2
     
     def initialize
+        @instruction = ["tl|tm|tr","ml|mm|mr","bl|bm|br"]
     end
     def user_interface
         puts "WELCOME TO TIC TAC TOE YOU WILL LOVE IT"
         puts "---------------------------------------\n\n"
+        print "Player1 name "
+        @player1 = gets.chomp
+        puts " "
+        print "Player2 name "
+        @player2 = gets.chomp
+        puts " "
+        puts "----------------------------------------------------------------------"
+        puts "|#{@player1},#{player2} You Both are going to be oponent for the Game|"
+        puts "----------------------------------------------------------------------"
+        puts "Below is the Game board you can type your turn that is Specified in Board"
+        puts "You can type to taking position 'tl','tm','tr' etc...\n\n"
+        puts @instruction
     end
 end
 tic_tac_game = TicTacToe.new
