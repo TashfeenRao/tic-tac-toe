@@ -58,10 +58,44 @@ class TicTacToe
     def switch_players
         if @current_player == player1
             @current_player = player2
-            else
-                @current_player = player1
+        else
+            @current_player = player1
         end
     end
 end
+class Player
+    attr_accessor :name , :piece
+    def initialize(name,piece,board)
+        raise "piece must be Symbol" unless piece.is_a?(Symbol)
+        @name  = name
+        @piece = piece
+        @board = board
+    end
+
+    def get_cordinates
+        loop do
+            chords = ask_cordinates
+            if validate_cordinate_formet(chords)
+                if @board.add_piece(chords,@piece)
+                    break
+                end
+            end
+        end
+    end
+
+    def ask_cordinates
+        puts "#{@name},#{@piece} enter your cordinates in the form x y"
+        gets.strip.split(",").map(&:to_i)
+    end
+
+    def validate_cordinate_formet(chords)
+        if chords.is_a?(Array) && chords.size == 2
+            true
+        else
+            puts "Your cordinates are Improper"
+        end
+    end
+end
+
 tic_tac_game = TicTacToe.new
 tic_tac_game.user_interface
