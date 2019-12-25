@@ -1,101 +1,101 @@
-#!/usr/bin/env ruby
-
 class TicTacToe
     
     def initialize
-        @instruction = [" tl | tm | tr "," "," ml | mm | mr "," "," bl | bm | br "]
-        @board = Board.new
-        @player1 = Player.new(@name1,:x,@board)
-        @player2 = Player.new(@name2,:y,@board)
-        @current_player = @player1
+      @board = [" "," "," "," "," "," "," "," "," "]
+      @name1 
+      @name2 
+      @player = "X"
     end
     def user_interface
         puts "WELCOME TO TIC TAC TOE YOU WILL LOVE IT"
         puts "---------------------------------------\n\n"
         print "Player 1 name "
-        @name1 = gets.chomp
+        @name1 = gets.chomp.capitalize!
         puts " "
         print "Player 2 name "
-        @name2 = gets.chomp
+        @name2 = gets.chomp.capitalize!
         puts " "
         puts "----------------------------------------------------------------------"
-        puts "|#{@player1} and #{player2}. You Both are going to be oponent for this Game|"
+        puts "|#{@name1} and #{@name2}. You Both are going to be oponent for this Game|"
         puts "----------------------------------------------------------------------"
         puts " "
         puts "Below is the Game board you can type your turn that is Specified in the Board"
         puts " "
-        puts "You can type to take position 'tl','tm','tr' etc...\n\n"
-        puts @instruction
-    end
-    def play
-        loop do
-            @board.render
-            @current_player.get_cordinates
+        display_board(@board)
+        Play(@board,@player)
 
-            break if game_over
-            switch_players
+    end
+    def Play(board,player)
+        i = 0
+        while i < 9
+          turn(@board,player)
+          i += 1
         end
-    end
-    def game_over
-        check_victory || check_draw
-    end
-    def check_victory
-        if @board.winning_combination?(@current_player.piece)
-            puts "Congratulation #{@current_player.name} You WON"
-            turn
-        else
-            false
-        end
-    end
-    def check_draw
-        if @board.full?
-            puts "You Both PLayed Well You Have a Tie"
-            true
-        else
-            false
-        end
-    end
-    def switch_players
-        if @current_player == player1
-            @current_player = player2
-        else
-            @current_player = player1
-        end
-    end
-end
-class Player
-    attr_accessor :name , :piece
-    def initialize(name,piece,board)
-        raise "piece must be Symbol" unless piece.is_a?(Symbol)
-        @name  = name
-        @piece = piece
-        @board = board
     end
 
-    def get_cordinates
-        loop do
-            chords = ask_cordinates
-            if validate_cordinate_formet(chords)
-                if @board.add_piece(chords,@piece)
-                    break
-                end
+    def turn_count(board)
+        counter = 0
+        board.each do |check|
+            if check == "X" || check == "O"
+                counter += 1
             end
         end
+      counter
     end
 
-    def ask_cordinates
-        puts "#{@name},#{@piece} enter your cordinates in the form x y"
-        gets.strip.split(",").map(&:to_i)
+    def current_player(board,player)
+        if turn_count(board) % 2 == 0 
+            player = "X"
+        else
+            player = "O"
+        end
+    end
+    def display_board(board)
+        puts " #{board[0]} | #{board[1]} | #{board[2]} "
+        puts "-----------"
+        puts " #{board[3]} | #{board[4]} | #{board[5]} "
+        puts "-----------"
+        puts " #{board[6]} | #{board[7]} | #{board[8]} "
+        puts " "
     end
 
-    def validate_cordinate_formet(chords)
-        if chords.is_a?(Array) && chords.size == 2
+    def turn(board,player)
+       puts "enter no to take position 1-9"
+       input = gets.strip
+       index = input_to_index(input)
+       if valid_move?(board,index)
+           move(board,index,player)
+           display_board(board)
+        else
+            puts "invalid move"
+            input = gets.strip
+        end
+    end
+    
+    def input_to_index(input)
+       index = input.to_i - 1
+    end
+
+    def move(board,index,value)
+        player = current_player(board,value)
+            board[index] = player
+    end
+
+    def position_taken?(board,index)
+        if board[index] == "X" || board[index] == "O"
             true
         else
-            puts "Your cordinates are Improper"
+            false
+        end
+    end
+    
+    def valid_move?(board,index)
+        if position_taken?(board,index) == false && index.between?(0,8)
+            true
+        else
+            false
         end
     end
 end
-
 tic_tac_game = TicTacToe.new
 tic_tac_game.user_interface
