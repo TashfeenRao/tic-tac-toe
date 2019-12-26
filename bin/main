@@ -5,6 +5,7 @@ class TicTacToe
       @name1 
       @name2 
       @player = "X"
+      @win_combinations = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
     end
     def user_interface
         puts "WELCOME TO TIC TAC TOE YOU WILL LOVE IT"
@@ -22,15 +23,21 @@ class TicTacToe
         puts "Below is the Game board you can type your turn that is Specified in the Board"
         puts " "
         display_board(@board)
-        Play(@board,@player,@name1,@name2)
+        Play(@board,@player,@name1,@name2,@win_combinations)
 
     end
-    def Play(board,player,name1,name2)
-        i = 0
-        while i < 9
-          turn(@board,player,name1,name2)
-          i += 1
+    def Play(board,player,name1,name2,win_combinations)
+        
+        while !game_over?(board,win_combinations)
+
+          turn(board,player,name1,name2,win_combinations)
         end
+        if won?(board,win_combinations)
+           puts "Congratulations #{winner(board,win_combinations,name1,name2)} , You Won"
+        end
+        if draw?(board,win_combinations)
+           puts "#{name1},#{name2} Game has been a Draw Well Played "
+        end     
     end
 
     def turn_count(board)
@@ -65,7 +72,7 @@ class TicTacToe
             name2
         end
     end
-    def turn(board,player,name1,name2)
+    def turn(board,player,name1,name2,win_combinations)
        puts "Its #{ name_turn(board,player,name1,name2)} turn, your Token is #{current_player(board,player)}"
        puts "enter no to take position 1-9"
        input = gets.strip
@@ -78,6 +85,55 @@ class TicTacToe
         end
     end
     
+    def won?(board,win_combinations)
+       win_combinations.detect do |check|
+          if board[check[0]] == "X" && board[check[1]] == "X" && board[check[2]] == "X"
+              check
+          elsif board[check[0]] == "O" && board[check[1]] == "O" && board[check[2]] == "O"
+              check
+          else
+              false
+          end
+       end
+    end
+
+    def full?(board)
+      board.all? do |check|
+        if check == "X" || check =="O"
+           true
+        else
+           false
+        end
+      end
+    end
+    
+
+    def draw?(board,win_combinations)
+       if full?(board) && !won?(board,win_combinations)
+          true
+        else
+          false
+        end
+    end
+
+    def game_over?(board,win_combinations)
+        if draw?(board,win_combinations) || full?(board)
+           true
+        else
+           false
+        end
+    end
+
+    def winner(board,win_combinations,name1,name2)
+       if won?(board,win_combinations)
+           if board[won?(board,win_combinations)[0]] == "X"
+              name1
+           else
+              name2
+           end
+        end
+
+    end
     def input_to_index(input)
        index = input.to_i - 1
     end
