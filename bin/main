@@ -22,13 +22,13 @@ class TicTacToe
         puts "Below is the Game board you can type your turn that is Specified in the Board"
         puts " "
         display_board(@board)
-        Play(@board,@player)
+        Play(@board,@player,@name1,@name2)
 
     end
-    def Play(board,player)
+    def Play(board,player,name1,name2)
         i = 0
         while i < 9
-          turn(@board,player)
+          turn(@board,player,name1,name2)
           i += 1
         end
     end
@@ -58,8 +58,15 @@ class TicTacToe
         puts " #{board[6]} | #{board[7]} | #{board[8]} "
         puts " "
     end
-
-    def turn(board,player)
+    def name_turn(board,player,name1,name2)
+        if current_player(board,player) == "X"
+            name1
+        else
+            name2
+        end
+    end
+    def turn(board,player,name1,name2)
+       puts "Its #{ name_turn(board,player,name1,name2)} turn, your Token is #{current_player(board,player)}"
        puts "enter no to take position 1-9"
        input = gets.strip
        index = input_to_index(input)
@@ -67,8 +74,7 @@ class TicTacToe
            move(board,index,player)
            display_board(board)
         else
-            puts "invalid move"
-            input = gets.strip
+            puts "invalid move Type again"
         end
     end
     
