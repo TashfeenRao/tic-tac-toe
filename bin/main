@@ -1,3 +1,175 @@
 #!/usr/bin/env ruby
+#rubocop:disable all
 
-puts "Hello World!"
+class TicTacToe
+    
+  def initialize
+    @board = [" "," "," "," "," "," "," "," "," "]
+    @name1 
+    @name2 
+    @player = "X"
+    @win_combinations = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
+  end
+
+  def user_interface
+      puts "WELCOME TO TIC TAC TOE YOU WILL LOVE IT"
+      puts "---------------------------------------\n\n"
+      print "Player 1 name "
+      @name1 = gets.chomp.capitalize!
+      puts " "
+      print "Player 2 name "
+      @name2 = gets.chomp.capitalize!
+      puts " "
+      puts "----------------------------------------------------------------------"
+      puts "|#{@name1} and #{@name2}. You Both are going to be oponent for this Game|"
+      puts "----------------------------------------------------------------------"
+      puts " "
+      puts "Below is the Game board you can type your turn that is Specified in the Board"
+      puts " "
+      display_board(@board)
+      Play(@board,@player,@name1,@name2,@win_combinations)
+
+  end
+
+  def Play(board,player,name1,name2,win_combinations)
+      while !game_over?(board,win_combinations)
+        turn(board,player,name1,name2,win_combinations)
+      end
+
+      if won?(board,win_combinations)
+         puts "Congratulations #{winner(board,win_combinations,name1,name2)} , You Won"
+      end
+
+      if draw?(board,win_combinations)
+         puts "#{name1},#{name2} Game has been a Draw Well Played "
+      end    
+  end
+
+  def turn_count(board)
+      counter = 0
+      board.each do |check|
+          if check == "X" || check == "O"
+              counter += 1
+          end
+      end
+    counter
+  end
+
+  def current_player(board,player)
+      if turn_count(board) % 2 == 0 
+          player = "X"
+      else
+          player = "O"
+      end
+  end
+
+  def display_board(board)
+      puts " #{board[0]} | #{board[1]} | #{board[2]} "
+      puts "-----------"
+      puts " #{board[3]} | #{board[4]} | #{board[5]} "
+      puts "-----------"
+      puts " #{board[6]} | #{board[7]} | #{board[8]} "
+      puts " "
+  end
+
+  def name_turn(board,player,name1,name2)
+      if current_player(board,player) == "X"
+          name1
+      else
+          name2
+      end
+  end
+
+  def turn(board,player,name1,name2,win_combinations)
+     puts "Its #{ name_turn(board,player,name1,name2)} turn, your Token is #{current_player(board,player)}"
+     puts "enter no to take position 1-9"
+     input = gets.strip
+     index = input_to_index(input)
+     if valid_move?(board,index)
+         move(board,index,player)
+         display_board(board)
+      else
+          puts "invalid move Type again"
+      end
+  end
+
+  def full?(board)
+    board.all? do |check|
+      if check == "X" || check =="O"
+         true
+      else
+         false
+      end
+    end
+  end
+
+  def input_to_index(input)
+     index = input.to_i - 1
+  end
+
+  def move(board,index,value)
+      player = current_player(board,value)
+          board[index] = player
+  end
+
+  def position_taken?(board,index)
+      if board[index] == "X" || board[index] == "O"
+          true
+      else
+          false
+      end
+  end
+  
+  def valid_move?(board,index)
+      if position_taken?(board,index) == false && index.between?(0,8)
+          true
+      else
+          false
+      end
+  end
+
+  def game_over?(board,win_combinations)
+      if draw?(board,win_combinations) || full?(board)
+         true
+      else
+         false
+      end
+  end
+
+  def draw?(board,win_combinations)
+      if full?(board) && !won?(board,win_combinations)
+         true
+       else
+         false
+       end
+   end
+
+  def won?(board,win_combinations)
+      win_combinations.detect do |check|
+         if board[check[0]] == "X" && board[check[1]] == "X" && board[check[2]] == "X"
+             check
+         elsif board[check[0]] == "O" && board[check[1]] == "O" && board[check[2]] == "O"
+             check
+         else
+             false
+         end
+      end
+   end
+
+   def winner(board,win_combinations,name1,name2)
+      if won?(board,win_combinations)
+          if board[won?(board,win_combinations)[0]] == "X"
+             name1
+          else
+             name2
+          end
+       end
+
+   end
+
+end
+tic_tac_game = TicTacToe.new
+tic_tac_game.user_interface
+
+
+#rubocop:enable all
