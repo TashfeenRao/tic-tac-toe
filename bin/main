@@ -1,4 +1,6 @@
+#!/usr/bin/env ruby
 #rubocop:disable all
+# frozen_string_literal: true
 
 class TicTacToe
     attr_accessor :name1 , :name2 
@@ -184,3 +186,5 @@ game_player  = Player.new
 tic_tac_game.user_interface
 game_board.display_board(board = [" "," "," "," "," "," "," "," "," "])
 game_player.Play(game_board,tic_tac_game,game_status,game_player)
+
+#rubocop:enable all
