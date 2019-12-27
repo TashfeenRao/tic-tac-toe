@@ -96,7 +96,7 @@ class GameStatus
    end
 
   def won?(board,win_combinations)
-      win_combinations.detect do |check|
+      win_combinations.each do |check|
          if board[check[0]] == "X" && board[check[1]] == "X" && board[check[2]] == "X"
              check
          elsif board[check[0]] == "O" && board[check[1]] == "O" && board[check[2]] == "O"
@@ -130,7 +130,7 @@ end
       end
 
       if game_status.won?(game_board.board,game_status.win_combinations)
-         puts "Congratulations #{winner(game_board.board,tic_tac_game.name1,tic_tac_game.name2,game_status.win_combinations)} , You Won"
+         puts "Congratulations #{game_status.winner(game_board.board,tic_tac_game.name1,tic_tac_game.name2,game_status.win_combinations)} , You Won"
       end
 
       if game_status.draw?(game_board.board,game_status)
