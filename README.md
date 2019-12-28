@@ -27,7 +27,6 @@
   - [Contributions, Issues and Forking](https://github.com/TashfeenRao/tic-tac-toe.git#-contributions-issues-and-forking)
   - [Creators](https://github.com/TashfeenRao/tic-tac-toe.git#--creators)
   - [Show Your Support](https://github.com/TashfeenRao/tic-tac-toe.git#-show-your-support)
-  - [Licensing](https://github.com/TashfeenRao/tic-tac-toe.git#%EF%B8%8F-licensing)
 
 
 ## ❓ About This Project
