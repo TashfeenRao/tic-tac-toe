@@ -1,10 +1,4 @@
-
-<p align="center">
-  <img src="splash-screen.png" alt="Splash Screen" width="718" height="394">
-
-  <p align="center">
-  
-  # 🕹️ Tic-Tac-Toe - Object Oriented Programming
+  # 🕹️ Tic-Tac-Toe: Two players Game
   </p>
 
   <p align="center">
