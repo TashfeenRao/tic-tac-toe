@@ -1,6 +1,7 @@
 AllCops:
   Include:
     - bin/main
+    - "lib/*"
     - "db/**/*"
     - "config/**/*"
     - "Guardfile"
