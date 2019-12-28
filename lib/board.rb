@@ -4,18 +4,9 @@
 require_relative '../lib/player.rb'
 require_relative '../lib/game_status.rb'
 class Board
-  attr_accessor :board
+  attr_reader :board
   def initialize
     @board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-  end
-
-  def display_board(board)
-    puts " #{board[0]} | #{board[1]} | #{board[2]} "
-    puts '-----------'
-    puts " #{board[3]} | #{board[4]} | #{board[5]} "
-    puts '-----------'
-    puts " #{board[6]} | #{board[7]} | #{board[8]} "
-    puts ' '
   end
 
   def input_to_index(input)

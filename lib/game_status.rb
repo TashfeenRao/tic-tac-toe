@@ -4,7 +4,7 @@
 require_relative '../lib/board.rb'
 require_relative '../lib/player.rb'
 class GameStatus
-  attr_accessor :win_combinations
+  attr_reader :win_combinations
   def initialize
     @win_combinations = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
   end

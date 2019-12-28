@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby
-#rubocop:disable all
 # frozen_string_literal: true
 
 require_relative '../lib/board.rb'
@@ -7,36 +6,56 @@ require_relative '../lib/player.rb'
 require_relative '../lib/game_status.rb'
 
 class TicTacToe
-    attr_reader :name1 , :name2 
+  attr_reader :name1, :name2
   def initialize
-    @name1 
+    @name1
     @name2
   end
 
   def user_interface
-      puts "WELCOME TO TIC TAC TOE YOU WILL LOVE IT"
-      puts "---------------------------------------\n\n"
-      print "Player 1 name "
-      @name1 = gets.chomp.capitalize!
-      puts " "
-      print "Player 2 name "
-      @name2 = gets.chomp.capitalize!
-      puts " "
-      puts "----------------------------------------------------------------------"
-      puts "|#{@name1} and #{@name2}. You Both are going to be oponent for this Game|"
-      puts "----------------------------------------------------------------------"
-      puts " "
-      puts "Below is the Game board you can type your turn that is Specified in the Board"
-      puts " "
+    puts 'WELCOME TO TIC TAC TOE YOU WILL LOVE IT'
+    puts "---------------------------------------\n\n"
+    print 'Player 1 name '
+    @name1 = gets.chomp.capitalize!
+    puts ' '
+    print 'Player 2 name '
+    @name2 = gets.chomp.capitalize!
+    puts ' '
+    puts '----------------------------------------------------------------------'
+    puts "|#{@name1} and #{@name2}. You Both are going to be oponent for this Game|"
+    puts '----------------------------------------------------------------------'
+    puts ' '
+    puts 'Below is the Game board you can type your turn that is Specified in the Board'
+    puts ' '
+  end
+
+  def display_board(board)
+    puts " #{board[0]} | #{board[1]} | #{board[2]} "
+    puts '-----------'
+    puts " #{board[3]} | #{board[4]} | #{board[5]} "
+    puts '-----------'
+    puts " #{board[6]} | #{board[7]} | #{board[8]} "
+    puts ' '
+  end
+
+  def turn(game_board, player, name1, name2, _win_combinations, tic_tac_game)
+    puts "Its #{player.name_turn(game_board.board, player, name1, name2)} turn, your Token is #{player.current_player(game_board.board, player)}"
+    puts 'enter no to take position 1-9'
+    input = gets.strip
+    index = game_board.input_to_index(input)
+    if game_board.valid_move?(game_board.board, index)
+      game_board.move(game_board.board, index, player)
+      tic_tac_game.display_board(game_board.board)
+    else
+      puts 'invalid move Type again'
+     end
   end
 end
 
 tic_tac_game = TicTacToe.new
-game_board   = Board.new
-game_status  = GameStatus.new
-game_player  = Player.new
+game_board = Board.new
+game_status = GameStatus.new
+game_player = Player.new
 tic_tac_game.user_interface
-game_board.display_board(board = [" "," "," "," "," "," "," "," "," "])
-game_player.Play(game_board,tic_tac_game,game_status,game_player)
-
-#rubocop:enable all
+tic_tac_game.display_board(board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '])
+puts game_player.Play(game_board, tic_tac_game, game_status, game_player)
