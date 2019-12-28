@@ -1,4 +1,4 @@
-
+#!/usr/bin/env ruby
 #rubocop:disable all
 # frozen_string_literal: true
 require_relative '../lib/board.rb'
@@ -6,7 +6,7 @@ require_relative '../lib/player.rb'
 require_relative '../lib/game_status.rb'
 
 class TicTacToe
-    attr_accessor :name1 , :name2 
+    attr_reader :name1 , :name2 
   def initialize
     @name1 
     @name2
