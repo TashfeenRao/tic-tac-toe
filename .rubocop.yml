@@ -1,5 +1,5 @@
 AllCops:
-  Include:
+  Exclude:
     - "lib/*"
     - "bin/*"
     - "db/**/*"
@@ -10,17 +10,22 @@ AllCops:
   DisplayCopNames: true
 
 Metrics/LineLength:
+  Enabled: false
   Max: 120
 Metrics/MethodLength:
   Include: ["app/controllers/*"]
+  Enabled: false
   Max: 20
 Metrics/AbcSize:
   Include: ["app/controllers/*"]
+  Enabled: false
   Max: 30
 Metrics/ClassLength:
+  Enabled: false
   Max: 150
 Metrics/BlockLength:
   ExcludedMethods: ["describe"]
+  Enabled: false
 
 Style/Documentation:
   Enabled: false

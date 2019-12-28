@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-#rubocop:disable all
 
 require_relative '../lib/board.rb'
 require_relative '../lib/player.rb'
@@ -57,5 +56,3 @@ class GameStatus
      end
   end
 end
-
-#rubocop:enable all
