@@ -87,7 +87,7 @@ Just incase you're not too familiar with the game of Tic-Tac-Toe (or Noughts and
 - Each player is assigned either a 'O' or a 'X' at the start of the game
 - The objective of the game is to line up three of your 'X's or 'O's either horizontally,          vertically or diagonally on the board.
 - Each player has one move per turn.
-- If neither player lines up their 'X's or 'O's, then it's a draw, otherwise either of the      participants wins the game.
+- If none of the players lines up their 'X's or 'O's, then the game is considered to be a draw, otherwise either of the participants wins the game.
 
 ## 🥂 Contributions, Issues and Forking
 
