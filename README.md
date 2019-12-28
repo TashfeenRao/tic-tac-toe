@@ -1,4 +1,4 @@
-<p align="center" font-size="50px" font-weight="bold">
+<p align="center" font-size="50" font-weight="bold">
    🕹️ Tic-Tac-Toe: Two players Game
   </p>
 
