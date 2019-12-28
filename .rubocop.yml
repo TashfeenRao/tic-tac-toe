@@ -1,7 +1,8 @@
 
 AllCops:
-  Exclude:
+  Include:
     - "bin/*"
+    - "lib/*"
     - "db/**/*"
     - "config/**/*"
     - "Guardfile"
