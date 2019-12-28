@@ -1,6 +1,4 @@
-<p align="center"; size=40px;>
-   🕹️ <b>Tic-Tac-Toe: Two players Game</b>
-  </p>
+# 🕹️ Tic-Tac-Toe: Two players Game
 
   <p align="center">
     An exercise in OOP using Ruby to create an interactive command line Tic-Tac-Toe game
