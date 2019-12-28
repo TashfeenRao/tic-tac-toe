@@ -1,5 +1,5 @@
-<p align="center">
-  # 🕹️ Tic-Tac-Toe: Two players Game
+<p align="center" font-size="25px" font-weight="bold">
+   🕹️ Tic-Tac-Toe: Two players Game
   </p>
 
   <p align="center">
