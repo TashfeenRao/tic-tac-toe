@@ -8,7 +8,7 @@
   </p>
 
   <p align="center">
-    An exercise in OOP using Ruby to create an interactive and irreverent command line Tic-Tac-Toe game
+    An exercise in OOP using Ruby to create an interactive command line Tic-Tac-Toe game
     <br />
     <a href="https://github.com/TashfeenRao/tic-tac-toe/tree/readme_game_instructions"><strong>Explore This Repository »</strong></a>
     <br />
@@ -39,13 +39,13 @@
 
 ## ❓ About This Project
 
-This project is part of a series of projects to be completed by students of [Microverse](https://www.microverse.org/ 'The Global School for Remote Software Developers!').
+This project is part of a series of projects to be completed by students of [Microverse](https://www.microverse.org).
 
-This project consisted of creating a Tic-Tac-Toe game to be run from the command line, with the purpose of practicing and exercising the main concepts of Object Oriented Programming.
+This project consists of creating a Tic-Tac-Toe game to be run from the command line, with the purpose of practicing and exercising the main concepts of Object Oriented Programming.
 
 ## 🚧 The Project Brief
 
-The project specification and assinment details are part of The Odin Project's Ruby Programming course, which can be found [here.](https://www.theodinproject.com/courses/ruby-programming/lessons/oop)
+The project specification and assignment details are part of The Odin Project's Ruby Programming course, which can be found [here.](https://www.theodinproject.com/courses/ruby-programming/lessons/oop)
 
 This project was split up into four key milestones:
 1. **Project Setup** - creating the two main directories: **lib** for game logic and **bin* for the executable file
@@ -71,7 +71,7 @@ ___
 ### Setup
 1. Download this repo and place it somewhere accessible and convenient.
 
-3. The file you will use to run the game is the **main** file, located in the       **bin** folder. If you cannot run the file out of the box, give the **main**     file execute permissions using the following command in terminal:
+3. The file you will use to run the game is the **main** file, located in the **bin** folder. If you cannot run the file out of the box, give the **main** file execute permissions using the following command in terminal:
 
         `chmod +x bin/main`
 
@@ -89,21 +89,22 @@ ___
 Just incase you're not too familiar with the game of Tic-Tac-Toe (or Noughts and Crosses for that matter), it goes a little something like this:
 
 - The game is played on a 3x3 board
+- The game is played by two participants
+- When the game is opened, the two participants would be requested to enter their names each.
+- After the board is displayed, you would be asked to take a poistion on which to place your    token
 - Each player is assigned either a 'O' or a 'X' at the start of the game
-- The objective of the game is to line up three of your 'X's or 'O's either horizontally,          vertically or diagonally.
+- The objective of the game is to line up three of your 'X's or 'O's either horizontally,          vertically or diagonally on the board.
 - Each player has one move per turn.
-- If neither player lines up their 'X's or 'O's, then it's a draw!
-
-Instructions are also optionally available in-game in case you forget!
+- If neither player lines up their 'X's or 'O's, then it's a draw, otherwise either of the      participants wins the game.
 
 ## 🥂 Contributions, Issues and Forking
 
 Contributions, issues and feature requests are more than welcome! 
 
-If you have any problems running or setting up the game, please do check out the [issues page.](https://github.com/queeksm/Tic-Tac-Toe/issues)
+If you have any problems running or setting up the game, please do check out the [issues page.](https://github.com/TashfeenRao/tic-tac-toe/issues)
 
 If you want to make your own changes, modifications or improvements, go ahead and Fork it!
-1. Fork it (https://github.com/queeksm/Tic-Tac-Toe/fork)
+1. Fork it (https://github.com/TashfeenRao/tic-tac-toe/fork)
 2. Create your working branch (git checkout -b [choose-a-name])
 3. Commit your changes (git commit -am 'what this commit will fix/add/improve')
 4. Push to the branch (git push origin [chosen-name])
@@ -111,14 +112,10 @@ If you want to make your own changes, modifications or improvements, go ahead an
 
 ## 👨🏽‍💻 👨🏿‍💻 Creators
 
-Rory Hellier - [Github](https://github.com/Rhelli)
+Tashfeen Rao - [Github](https://github.com/TashfeenRao)
 
-Andres Perez - [GitHub](https://github.com/queeksm)
+Qoosim AbdulGhaniyy - [GitHub](https://github.com/Qoosim)
 
 ## 🖐🏼 Show Your Support
 
 Give a ⭐️ if you like this project!
-
-## ⚖️ Licensing
-
-This project is [MIT](https://github.com/queeksm/Tic-Tac-Toe/LICENSE.txt) licensed.
