@@ -1,3 +1,4 @@
+<p align="center">
   # 🕹️ Tic-Tac-Toe: Two players Game
   </p>
 
