@@ -8,14 +8,17 @@ class Player
     @player = 'X'
   end
 
-  def play(game_board, tic_tac_game, game_status, game_player)
-    tic_tac_game.turn(game_board, game_player, tic_tac_game.name1, tic_tac_game.name2, game_status.win_combinations, tic_tac_game) until game_status.game_over?(game_board.board, game_status.win_combinations)
+  def play(game, tic_game, game_status, game_player)
+    until game_status.game_over?(game.board, game_status.win_combinations)
+      tic_game.turn(game, game_player, tic_game.name1, tic_game.name2, game_status.win_combinations, tic_game)
+    end
+    if game_status.won?(game.board, game_status.win_combinations)
+      return "You Won #{game_status.winner(game.board, tic_game.name1, tic_game.name2, game_status.win_combinations)}"
+    end
 
-    return "Congratulations #{game_status.winner(game_board.board, tic_tac_game.name1, tic_tac_game.name2, game_status.win_combinations)} , You Won" if game_status.won?(game_board.board, game_status.win_combinations)
+    return unless game_status.draw?(game.board, game_status.win_combinations)
 
-    return unless game_status.draw?(game_board.board, game_status.win_combinations)
-
-    "#{tic_tac_game.name1},#{tic_tac_game.name2} Game has been a Draw Well Played "
+    "#{tic_game.name1},#{tic_game.name2} Game has been a Draw Well Played "
   end
 
   def name_turn(board, player, name1, name2)

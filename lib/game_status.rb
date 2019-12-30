@@ -36,14 +36,18 @@ class GameStatus
   end
 
   def won?(board, win_combinations)
-    win_combinations.detect do |check|
-      if board[check[0]] == 'X' && board[check[1]] == 'X' && board[check[2]] == 'X'
-        check
-      elsif board[check[0]] == 'O' && board[check[1]] == 'O' && board[check[2]] == 'O'
-        check
-      else
-        false
+    win_combinations.each do |winning_array|
+      if winning_array.all? do |position|
+           board[position] == 'X'
+         end
+        return winning_array
+      elsif winning_array.all? do |position|
+              board[position] == 'O'
+            end
+        return winning_array
       end
+
+      return false
     end
   end
 
