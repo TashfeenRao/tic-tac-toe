@@ -8,12 +8,14 @@ class Player
     @player = 'X'
   end
 
-  def Play(game_board, tic_tac_game, game_status, game_player)
+  def play(game_board, tic_tac_game, game_status, game_player)
     tic_tac_game.turn(game_board, game_player, tic_tac_game.name1, tic_tac_game.name2, game_status.win_combinations, tic_tac_game) until game_status.game_over?(game_board.board, game_status.win_combinations)
 
     return "Congratulations #{game_status.winner(game_board.board, tic_tac_game.name1, tic_tac_game.name2, game_status.win_combinations)} , You Won" if game_status.won?(game_board.board, game_status.win_combinations)
 
-    return "#{tic_tac_game.name1},#{tic_tac_game.name2} Game has been a Draw Well Played " if game_status.draw?(game_board.board, game_status.win_combinations)
+    return unless game_status.draw?(game_board.board, game_status.win_combinations)
+
+    "#{tic_tac_game.name1},#{tic_tac_game.name2} Game has been a Draw Well Played "
   end
 
   def name_turn(board, player, name1, name2)
@@ -22,21 +24,21 @@ class Player
     else
       name2
     end
-end
+  end
 
   def turn_count(board)
     counter = 0
     board.each do |check|
-      counter += 1 if check == 'X' || check == 'O'
+      counter += 1 if check.include?('X') || check.include?('O')
     end
     counter
   end
 
   def current_player(board, _player)
-    player = if turn_count(board).even?
-               'X'
-             else
-               'O'
-             end
+    if turn_count(board).even?
+      'X'
+    else
+      'O'
+    end
   end
 end

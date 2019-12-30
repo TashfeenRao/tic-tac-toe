@@ -2,6 +2,7 @@
 
 require_relative '../lib/board.rb'
 require_relative '../lib/player.rb'
+
 class GameStatus
   attr_reader :win_combinations
   def initialize
@@ -18,7 +19,7 @@ class GameStatus
 
   def full?(board)
     board.all? do |check|
-      if check == 'X' || check == 'O'
+      if check.include?('X') || check.include?('O')
         true
       else
         false
@@ -31,8 +32,8 @@ class GameStatus
       true
     else
       false
-     end
-   end
+    end
+  end
 
   def won?(board, win_combinations)
     win_combinations.detect do |check|
@@ -44,15 +45,15 @@ class GameStatus
         false
       end
     end
-   end
+  end
 
   def winner(board, name1, name2, win_combinations)
-    if won?(board, win_combinations)
-      if board[won?(board, win_combinations)[0]] == 'X'
-        name1
-      else
-        name2
-      end
-     end
+    return unless won?(board, win_combinations)
+
+    if board[won?(board, win_combinations)[0]] == 'X'
+      name1
+    else
+      name2
+    end
   end
 end
