@@ -6,7 +6,7 @@ require './lib/player'
 
 RSpec.describe 'Board' do
   let(:board) { Board.new }
-  let(:player) { Player.new }
+  let(:plyr)  { Player.new }
 
   describe '#input_to_index' do
     it 'input_to_index will return integer' do
@@ -15,11 +15,11 @@ RSpec.describe 'Board' do
     end
   end
 
-  describe '#move' do
-    it 'move will add current X or O in board' do
-      brd = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-      p = player.current_player(brd, player)
-      expect(board.move(brd, 0, p).to(eql([p.to_s, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '])))
-    end
+  describe '#position_taken?' do
+  it 'position_taken? will return integer' do
+     brd = [" "," ","X"," "," "," "," "," "," "]
+     index = 2
+    expect(board.position_taken?(brd,index)).to be_a(true)
   end
+ end
 end
