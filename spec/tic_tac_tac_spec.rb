@@ -61,6 +61,14 @@ RSpec.describe 'Board' do
       brd = [' ', 'O', ' ', ' ', 'O', ' ', ' ', 'O', ' ']
       expect(game.won?(brd, win)).to eql([1, 4, 7])
     end
+    it 'returns winning combination for diagonal left to right' do
+      brd = ['X', ' ', ' ', ' ', 'X', ' ', ' ', ' ', 'X']
+      expect(game.won?(brd, win)).to eql([0, 4, 8])
+    end
+    it 'returns winning combination for diagonal right to left' do
+      brd = ['', ' ', 'X', ' ', 'X', ' ', 'X', ' ', ' ']
+      expect(game.won?(brd, win)).to eql([2, 4, 6])
+    end
     it 'it will return nil if winning combinations are not provide' do
       brd = [' ', 'O', ' ', ' ', 'X', ' ', ' ', 'O', ' ']
       expect(game.won?(brd, win)).to eql(nil)
