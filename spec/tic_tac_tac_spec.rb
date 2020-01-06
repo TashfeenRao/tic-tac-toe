@@ -8,6 +8,8 @@ RSpec.describe 'Board' do
   let(:board) { Board.new }
   let(:plyr) { Player.new }
   let(:game) { GameStatus.new }
+  let(:display) { TicTacToe.new }
+
   let(:win) { [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]] }
 
   describe '#input_to_index' do
@@ -61,11 +63,11 @@ RSpec.describe 'Board' do
       brd = [' ', 'O', ' ', ' ', 'O', ' ', ' ', 'O', ' ']
       expect(game.won?(brd, win)).to eql([1, 4, 7])
     end
-    it 'returns winning combination for diagonal left to right' do
+    it 'returns winning combination for diagonal top left to bottom right' do
       brd = ['X', ' ', ' ', ' ', 'X', ' ', ' ', ' ', 'X']
       expect(game.won?(brd, win)).to eql([0, 4, 8])
     end
-    it 'returns winning combination for diagonal right to left' do
+    it 'returns winning combination for diagonal top right to bottom left' do
       brd = ['', ' ', 'X', ' ', 'X', ' ', 'X', ' ', ' ']
       expect(game.won?(brd, win)).to eql([2, 4, 6])
     end
@@ -83,6 +85,50 @@ RSpec.describe 'Board' do
     it 'it will return false if board is full and having winning combinations' do
       brd = %w[X O X O X O X X X]
       expect(game.draw?(brd, win)).to eql(false)
+    end
+  end
+
+  describe '#full?' do
+    it 'returns true if the board array fills up with players tokens' do
+      brd = %w[X O X O X X O X O]
+      expect(game.full?(brd)).to eql(true)
+    end
+    it 'returns false if the board array is not full' do
+      brd = ['X', 'O', 'X', 'O', 'X', ' ', 'O', 'X', 'O']
+      expect(game.full?(brd)).to eql(false)
+    end
+  end
+
+  describe '#game_over?' do
+    it 'returns true if the board is full' do
+      brd = %w[X O X O X X O X O]
+      expect(game.game_over?(brd, win)).to eql(true)
+    end
+    it 'returns true if the game is won' do
+      brd = ['X', 'X', 'X', ' ', ' ', ' ', ' ', ' ', ' ']
+      expect(game.game_over?(brd, win)).to eql(true)
+    end
+    it 'return true if the game is a draw' do
+      brd = %w[X O X O X X O X O]
+      expect(game.game_over?(brd, win)).to eql(true)
+    end
+  end
+
+  describe '#position_taken?' do
+    it 'returns true if the board cell occupies with "X" or "O" token' do
+      brd = [' ', 'X', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+      expect(board.position_taken?(brd, 1)).to eql(true)
+    end
+    it 'returns false if the board cell is empty' do
+      brd = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+      expect(board.position_taken?(brd, 3)).to eql(false)
+    end
+  end
+
+  describe '#move' do
+    it "places player's to the position specified" do
+      brd = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+      expect(board.move(brd, 2, "X")).to eql([' ', ' ', 'X', ' ', ' ', ' ', ' ', ' ', ' '])
     end
   end
 end
