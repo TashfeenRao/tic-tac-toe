@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative './lib/board'
-require_relative './lib/game_status'
-require_relative './lib/player'
+require_relative '../lib/board'
+require_relative '../lib/game_status'
+require_relative '../lib/player'
 
 RSpec.describe 'Board' do
   let(:board) { Board.new }
@@ -26,7 +26,7 @@ RSpec.describe 'Board' do
   describe '#move' do
     it "places player's to the position specified" do
       brd = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-      expect(board.move(brd, 2, 'X')).to eql([' ', ' ', 'X', ' ', ' ', ' ', ' ', ' ', ' '])
+      expect(board.move(brd, 2, plyr)).to eql('X')
     end
   end
 

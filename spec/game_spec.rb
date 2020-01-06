@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative './lib/board'
-require_relative './lib/game_status'
-require_relative './lib/player'
+require_relative '../lib/board'
+require_relative '../lib/game_status'
+require_relative '../lib/player'
 
 RSpec.describe 'GameStatus' do
   let(:board) { Board.new }
@@ -88,8 +88,6 @@ RSpec.describe 'GameStatus' do
       expect(game.game_over?(brd, win)).to eql(true)
     end
   end
-<<<<<<< HEAD:spec/game_spec.rb
-=======
 
   describe '#position_taken?' do
     it 'returns true if the board cell occupies with "X" or "O" token' do
@@ -109,5 +107,4 @@ RSpec.describe 'GameStatus' do
       expect(brd[2] = current).to eql('X')
     end
   end
->>>>>>> 1903689df168129dde4603a805aa1a0c2c1e1980:spec/tic_tac_tac_spec.rb
 end
