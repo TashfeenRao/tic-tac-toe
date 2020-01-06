@@ -88,4 +88,26 @@ RSpec.describe 'GameStatus' do
       expect(game.game_over?(brd, win)).to eql(true)
     end
   end
+<<<<<<< HEAD:spec/game_spec.rb
+=======
+
+  describe '#position_taken?' do
+    it 'returns true if the board cell occupies with "X" or "O" token' do
+      brd = [' ', 'X', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+      expect(board.position_taken?(brd, 1)).to eql(true)
+    end
+    it 'returns false if the board cell is empty' do
+      brd = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+      expect(board.position_taken?(brd, 3)).to eql(false)
+    end
+  end
+
+  describe '#move' do
+    it "places player's to the position specified" do
+      current = board.move(board.board, 2, plyr)
+      brd = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+      expect(brd[2] = current).to eql('X')
+    end
+  end
+>>>>>>> 1903689df168129dde4603a805aa1a0c2c1e1980:spec/tic_tac_tac_spec.rb
 end
