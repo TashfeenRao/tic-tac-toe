@@ -23,13 +23,24 @@ RSpec.describe 'Player' do
   end
 
   describe '#turn_count' do
-  it 'will gives No of Tokens are in board' do
-    brd = ['X', 'X', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-    expect(plyr.turn_count(brd)).to eql(2)
+    it 'will gives No of Tokens are in board' do
+      brd = ['X', 'X', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+      expect(plyr.turn_count(brd)).to eql(2)
+    end
+    it 'will gives Number of Tokens are in board' do
+      brd = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+      expect(plyr.turn_count(brd)).to eql(0)
+    end
   end
-  it 'will gives Number of Tokens are in board' do
-    brd = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-    expect(plyr.turn_count(brd)).to eql(0)
+
+  describe '#name_turn' do
+    it 'will gives name of player for either player ' do
+      brd = ['X', 'O', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+      expect(plyr.name_turn(brd, plyr, 'tashfeen', 'qasim')).to eql('tashfeen')
+    end
+    it 'will gives name of player for either player ' do
+      brd = ['X', 'O', 'X', ' ', ' ', ' ', ' ', ' ', ' ']
+      expect(plyr.name_turn(brd, plyr, 'tashfeen', 'qasim')).to eql('qasim')
+    end
   end
-end
 end
