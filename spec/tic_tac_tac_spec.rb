@@ -127,8 +127,9 @@ RSpec.describe 'Board' do
 
   describe '#move' do
     it "places player's to the position specified" do
+      current = board.move(board.board, 2, plyr)
       brd = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-      expect(board.move(brd, 2, "X")).to eql([' ', ' ', 'X', ' ', ' ', ' ', ' ', ' ', ' '])
+      expect(brd[2] = current).to eql('X')
     end
   end
 end
