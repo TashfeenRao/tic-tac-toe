@@ -59,7 +59,7 @@ RSpec.describe 'GameStatus' do
     end
     it 'it will return false if board is full and having winning combinations' do
       brd = %w[X O X O X O X X X]
-      expect(game.draw?(brd, win)).to eql(false)
+      expect(game.draw?(brd, win)).not_to eql(true)
     end
   end
 
@@ -70,7 +70,7 @@ RSpec.describe 'GameStatus' do
     end
     it 'returns false if the board array is not full' do
       brd = ['X', 'O', 'X', 'O', 'X', ' ', 'O', 'X', 'O']
-      expect(game.full?(brd)).to eql(false)
+      expect(game.full?(brd)).not_to eql(true)
     end
   end
 
@@ -96,7 +96,7 @@ RSpec.describe 'GameStatus' do
     end
     it 'returns false if the board cell is empty' do
       brd = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-      expect(board.position_taken?(brd, 3)).to eql(false)
+      expect(board.position_taken?(brd, 3)).not_to eql(true)
     end
   end
 
