@@ -13,8 +13,7 @@ class Board
   end
 
   def move(board, index, player)
-    player = player.current_player(board, player.player)
-    board[index] = player
+    board[index] = player.current_player(board, player.player)
   end
 
   def position_taken?(board, index)
